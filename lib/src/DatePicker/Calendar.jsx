@@ -15,6 +15,8 @@ const moment = extendMoment(Moment);
 export class Calendar extends Component {
   static propTypes = {
     date: PropTypes.object.isRequired,
+    selectedDate: PropTypes.object,
+    showCurrent: PropTypes.bool,
     minDate: DomainPropTypes.date,
     maxDate: DomainPropTypes.date,
     classes: PropTypes.object.isRequired,
@@ -38,10 +40,19 @@ export class Calendar extends Component {
     renderDay: undefined,
     utils: defaultUtils,
     shouldDisableDate: () => false,
+    showCurrent: true,
   }
 
   state = {
     currentMonth: this.props.utils.getStartOfMonth(this.props.date),
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.date !== this.props.date) {
+      this.setState({
+          currentMonth: nextProps.utils.getStartOfMonth(nextProps.date)
+      })
+    }
   }
 
   onDateSelect = (day) => {
@@ -91,10 +102,9 @@ export class Calendar extends Component {
 
   renderDays = (week) => {
     const {
-      date, renderDay, utils,
+      renderDay, utils, selectedDate, showCurrent
     } = this.props;
 
-    const selectedDate = date.clone().startOf('day');
     const currentMonthNumber = utils.getMonthNumber(this.state.currentMonth);
     const now = moment();
 
@@ -104,10 +114,10 @@ export class Calendar extends Component {
 
       let dayComponent = (
         <Day
-          current={day.isSame(now, 'day')}
+          current={showCurrent && day.isSame(now, 'day')}
           hidden={!dayInCurrentMonth}
           disabled={disabled}
-          selected={selectedDate.isSame(day, 'day')}
+          selected={selectedDate && selectedDate.isSame(day, 'day')}
         >
           {utils.getDayText(day)}
         </Day>
