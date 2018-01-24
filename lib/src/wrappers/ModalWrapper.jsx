@@ -83,6 +83,7 @@ export default class ModalWrapper extends PureComponent {
       cancelLabel,
       clearLabel,
       clearable,
+      buttonComponent,
       ...other
     } = this.props;
 
@@ -109,6 +110,7 @@ export default class ModalWrapper extends PureComponent {
           okLabel={okLabel}
           cancelLabel={cancelLabel}
           clearable={clearable}
+          buttonComponent={buttonComponent}
         >
           {children}
         </ModalDialog>

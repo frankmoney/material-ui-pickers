@@ -33,6 +33,7 @@ const ModalDialog = ({
   clearLabel,
   dialogContentClassName,
   clearable,
+  buttonComponent: ButtonComponent = Button,
   ...other
 }) => (
   <Dialog onClose={onDismiss} classes={{ paper: classes.dialogRoot }} {...other}>
@@ -47,29 +48,29 @@ const ModalDialog = ({
     >
 
       { clearable &&
-        <Button
+        <ButtonComponent
           color="primary"
           onClick={onClear}
           aria-label={clearLabel}
         >
           { clearLabel }
-        </Button>
+        </ButtonComponent>
       }
-      <Button
+      <ButtonComponent
         color="primary"
         onClick={onDismiss}
         aria-label={cancelLabel}
       >
         { cancelLabel }
-      </Button>
+      </ButtonComponent>
 
-      <Button
+      <ButtonComponent
         color="primary"
         onClick={onAccept}
         aria-label={okLabel}
       >
         { okLabel }
-      </Button>
+      </ButtonComponent>
     </DialogActions>
   </Dialog>
 );

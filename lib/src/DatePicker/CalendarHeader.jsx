@@ -22,15 +22,15 @@ export const CalendarHeader = (props) => {
   return (
     <div>
       <div className={classes.switchHeader}>
-        <IconButton onClick={selectPreviousMonth}>
+        <IconButton onClick={selectPreviousMonth} className={classes.switchHeaderButton}>
           {rtl ? rightArrowIcon : leftArrowIcon}
         </IconButton>
 
-        <Typography type="body1">
+        <Typography type="body1" className={classes.switchHeaderBody}>
           {utils.getCalendarHeaderText(currentMonth)}
         </Typography>
 
-        <IconButton onClick={selectNextMonth}>
+        <IconButton onClick={selectNextMonth} className={classes.switchHeaderButton}>
           {rtl ? leftArrowIcon : rightArrowIcon}
         </IconButton>
       </div>
@@ -73,6 +73,8 @@ const styles = theme => ({
     alignItems: 'center',
     marginBottom: theme.spacing.unit,
   },
+  switchHeaderButton: {},
+  switchHeaderBody: {},
   daysHeader: {
     display: 'flex',
     justifyContent: 'center',
