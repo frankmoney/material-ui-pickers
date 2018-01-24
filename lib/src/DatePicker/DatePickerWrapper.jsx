@@ -88,6 +88,7 @@ export default class DatePickerWrapper extends PickerBase {
       labelFunc,
       utils,
       shouldDisableDate,
+      noToolbar,
       ...other
     } = this.props;
 
@@ -118,6 +119,7 @@ export default class DatePickerWrapper extends PickerBase {
           renderDay={renderDay}
           utils={utils}
           shouldDisableDate={shouldDisableDate}
+          noToolbar={noToolbar}
         />
       </ModalWrapper>
     );
