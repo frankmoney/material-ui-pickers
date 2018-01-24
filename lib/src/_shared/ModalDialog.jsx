@@ -34,6 +34,8 @@ const ModalDialog = ({
   dialogContentClassName,
   clearable,
   buttonComponent: ButtonComponent = Button,
+  okButtonProps,
+  cancelButtonProps,
   ...other
 }) => (
   <Dialog onClose={onDismiss} classes={{ paper: classes.dialogRoot }} {...other}>
@@ -60,6 +62,7 @@ const ModalDialog = ({
         color="primary"
         onClick={onDismiss}
         aria-label={cancelLabel}
+        {...cancelButtonProps}
       >
         { cancelLabel }
       </ButtonComponent>
@@ -68,6 +71,7 @@ const ModalDialog = ({
         color="primary"
         onClick={onAccept}
         aria-label={okLabel}
+        {...okButtonProps}
       >
         { okLabel }
       </ButtonComponent>
@@ -94,6 +98,8 @@ ModalDialog.defaultProps = {
   okLabel: 'OK',
   cancelLabel: 'Cancel',
   clearLabel: 'Clear',
+  okButtonProps: {},
+  cancelButtonProps: {}
 };
 
 export default withStyles(styles, { name: 'MuiPickersModal' })(ModalDialog);
