@@ -83,12 +83,13 @@ export class DatePicker extends PureComponent {
       renderDay,
       utils,
       shouldDisableDate,
+      noToolbar,
     } = this.props;
     const { showYearSelection } = this.state;
 
     return (
       <Fragment>
-        <PickerToolbar>
+        {!noToolbar && <PickerToolbar>
           <ToolbarButton
             type="subheading"
             onClick={this.openYearSelection}
@@ -102,7 +103,7 @@ export class DatePicker extends PureComponent {
             selected={!showYearSelection}
             label={utils.getDatePickerHeaderText(this.date)}
           />
-        </PickerToolbar>
+        </PickerToolbar>}
 
         { this.props.children }
 
