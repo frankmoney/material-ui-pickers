@@ -107,7 +107,6 @@ export default class DatePickerWrapper extends PickerBase {
       >
         <DatePicker
           date={date}
-          selectedDate={date}
           onChange={this.handleChange}
           disablePast={disablePast}
           disableFuture={disableFuture}

@@ -123,6 +123,7 @@ export class DatePicker extends PureComponent {
             :
               <Calendar
                 date={this.date}
+                selectedDate={this.date}
                 onChange={onChange}
                 disablePast={disablePast}
                 disableFuture={disableFuture}
